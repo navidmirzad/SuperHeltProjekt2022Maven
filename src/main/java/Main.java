@@ -9,12 +9,13 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Velkommen til SuperHelt Databasen 2022!");
-        System.out.println("-------------------");
+        System.out.println("----------------------");
 
         int menuvalg;
         do {
             System.out.println("1. Opret superhelt: ");
             System.out.println("9. Afslut: ");
+            System.out.println("5. Se listen af superhelte: ");
             menuvalg = scanner.nextInt();
             scanner.nextLine();
 
@@ -32,7 +33,8 @@ public class Main {
                 System.out.println("Superhelt er nu oprettet");
 
                 database.createSuperhero(navn, rigtigNavn, Superkræft, powerlevel, opdagelsesÅr);
-            } else if (menuvalg == 9) ;
+            }
+            else if (menuvalg == 9) ;
             System.out.println("Programmet afsluttes");
 
         } while (menuvalg != 9);

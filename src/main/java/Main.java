@@ -16,6 +16,7 @@ public class Main {
         System.out.println("----------------------");
 
         int menuvalg;
+
         do {
             System.out.println("1. Opret superhelt: ");
             System.out.println("5. Se listen af superhelte: ");
@@ -37,18 +38,19 @@ public class Main {
                 System.out.println("Superhelt er nu oprettet");
 
                 database.createSuperhero(navn, rigtigNavn, superkræft, powerlevel, opdagelsesÅr);
-
-                if (menuvalg == 5) {
-                    for (Superhero superheroList : database.getSuperheroes()) {
-                        System.out.println(superheroList);
-                    }
-                } else if (menuvalg == 9) ;
-                System.out.println("Programmet afsluttes");
             }
 
-        }while (menuvalg != 9) ;
+            if (menuvalg == 5) {
+                for (Superhero superheroList : database.getSuperheroes()) {
+                    System.out.println(superheroList);
+                }
+            } else if (menuvalg == 9) ;
+
+        } while (menuvalg != 9);
+        System.out.println("Programmet afsluttes");
     }
 }
+
 
         /*Superhero superhelt1 = new Superhero("Spiderman", "Peter Parker", "spider abilities", "stærk", 2000);
         Superhero superhelt2 = new Superhero("Dr. Strange", "Stephen Strange", "magi", "meget stærk", 1980);

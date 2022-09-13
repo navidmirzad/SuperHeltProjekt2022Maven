@@ -1,9 +1,13 @@
+import javax.xml.crypto.Data;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+
 
         Database database = new Database();
         Scanner scanner = new Scanner(System.in);
@@ -14,8 +18,8 @@ public class Main {
         int menuvalg;
         do {
             System.out.println("1. Opret superhelt: ");
-            System.out.println("9. Afslut: ");
             System.out.println("5. Se listen af superhelte: ");
+            System.out.println("9. Afslut: ");
             menuvalg = scanner.nextInt();
             scanner.nextLine();
 
@@ -25,19 +29,24 @@ public class Main {
                 System.out.println("Indtasat Superheltens rigtige navn: ");
                 String rigtigNavn = scanner.nextLine();
                 System.out.println("Indtast Superheltens superkræfter: ");
-                String Superkræft = scanner.nextLine();
+                String superkræft = scanner.nextLine();
                 System.out.println("Indtast Superheltens powerlevel: ");
                 double powerlevel = scanner.nextDouble();
                 System.out.println("Indtast Superheltens opdagelses år: ");
                 int opdagelsesÅr = scanner.nextInt();
                 System.out.println("Superhelt er nu oprettet");
 
-                database.createSuperhero(navn, rigtigNavn, Superkræft, powerlevel, opdagelsesÅr);
-            }
-            else if (menuvalg == 9) ;
-            System.out.println("Programmet afsluttes");
+                database.createSuperhero(navn, rigtigNavn, superkræft, powerlevel, opdagelsesÅr);
 
-        } while (menuvalg != 9);
+                if (menuvalg == 5) {
+                    for (Superhero superheroList : database.getSuperheroes()) {
+                        System.out.println(superheroList);
+                    }
+                } else if (menuvalg == 9) ;
+                System.out.println("Programmet afsluttes");
+            }
+
+        }while (menuvalg != 9) ;
     }
 }
 

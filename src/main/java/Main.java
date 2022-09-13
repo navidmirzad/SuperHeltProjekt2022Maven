@@ -16,6 +16,7 @@ public class Main {
             System.out.println("1. Opret superhelt: ");
             System.out.println("9. Afslut: ");
             menuvalg = scanner.nextInt();
+            scanner.nextLine();
 
             if (menuvalg == 1) {
                 System.out.println("Indtast nye superhelts navn: ");

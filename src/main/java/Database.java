@@ -11,6 +11,7 @@ public class Database {
                                 String superkræft, double powerlevel, int opdagelsesår) {
 
         Superhero superhero = new Superhero(superheltnavn, rigtigenavn, superkræft, powerlevel, opdagelsesår);
+        superheroes.add(superhero);
     }
     public ArrayList<Superhero> getSuperheroes() {
         return superheroes;

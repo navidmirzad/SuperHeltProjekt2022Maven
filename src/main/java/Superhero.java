@@ -39,8 +39,11 @@ public class Superhero {
     }
 
     public String toString() {
-        return superheltnavn + " " + rigtigenavn + " " + superkræft +
-                " " + powerlevel + " " + opdagelsesår;
+        return "Superheltens navn: " + superheltnavn +
+                "Rigtige navn: " + rigtigenavn +
+                "Superkræft : " + superkræft +
+                "Powerlevel : " + powerlevel +
+                "Opdagelsesår: " + opdagelsesår;
     }
 }
 

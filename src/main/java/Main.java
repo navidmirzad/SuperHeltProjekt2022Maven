@@ -35,14 +35,20 @@ public class Main {
                 double powerlevel = scanner.nextDouble();
                 System.out.println("Indtast Superheltens opdagelses år: ");
                 int opdagelsesÅr = scanner.nextInt();
-                System.out.println("Superhelt er nu oprettet");
+                System.out.println("Superhelt er nu oprettet\n");
 
                 database.createSuperhero(navn, rigtigNavn, superkræft, powerlevel, opdagelsesÅr);
             }
 
             if (menuvalg == 5) {
-                for (Superhero superheroList : database.getSuperheroes()) {
-                    System.out.println(superheroList);
+                for (Superhero superhero : database.getSuperheroes()) {
+                    System.out.println("Superhelt navn: " + superhero.getSuperheltnavn());
+                    System.out.println("Superhelts rigtige navn: " + superhero.getRigtigenavn());
+                    System.out.println("Superkræft: " + superhero.getSuperkræft());
+                    System.out.println("Powerevel: " + superhero.getPowerlevel());
+                    System.out.println("Opdagelsesår: " + superhero.getOpdagelsesår());
+                    System.out.println(" ");
+
                 }
             } else if (menuvalg == 9) ;
 

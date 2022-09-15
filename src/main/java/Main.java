@@ -54,6 +54,7 @@ public class Main {
 
             if (menuvalg == 5) {
                 for (Superhero superhero : database.getSuperheroes()) {
+                    String søgning = scanner.nextLine();
                     System.out.println("Superhelt navn: " + superhero.getSuperheltnavn());
                     System.out.println("Superhelts rigtige navn: " + superhero.getRigtigenavn());
                     System.out.println("Superkræft: " + superhero.getSuperkræft());

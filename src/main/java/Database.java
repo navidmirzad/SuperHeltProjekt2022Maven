@@ -20,15 +20,12 @@ public class Database {
 
     public Superhero searchForSuperhero(String searchTerm) {
         for (Superhero s : getSuperheroes()) {
-            if (s.getSuperheltnavn().equals(searchTerm));
-            System.out.println("Fundet: ");
-            return s;
+            if (s.getSuperheltnavn().equals(searchTerm)) {
+                System.out.println("Fundet superhelt:  ");
+                return s;
+            }
         }
-            return null;
-        }
-
+        System.out.println("Kunne ikke finde superhelt: ");
+        return null;
     }
-    /*searchTerm.equals(searchTerm);
-        searchTerm.equalsIgnoreCase(searchTerm);
-        searchTerm.contains(searchTerm);
-        searchTerm.isEmpty();*/
+}

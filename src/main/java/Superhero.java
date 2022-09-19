@@ -54,7 +54,7 @@ public class Superhero {
         return opdagelsesår;
     }
 
-    private void setOpdagelsesår(int opdagelsesår) {
+    public void setOpdagelsesår(int opdagelsesår) {
         this.opdagelsesår = opdagelsesår;
     }
 

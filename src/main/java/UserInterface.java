@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -12,7 +13,6 @@ public class UserInterface {
     }
 
     private void menuvalg() {
-
         int menuvalg;
 
         do {
@@ -30,20 +30,54 @@ public class UserInterface {
                 String rigtigNavn = scanner.nextLine();
                 System.out.println("Indtast Superheltens superkræfter: ");
                 String superkræft = scanner.nextLine();
-                System.out.println("Indtast Superheltens powerlevel: ");
-                double powerlevel = scanner.nextDouble();
-                System.out.println("Indtast Superheltens opdagelses år: ");
-                int opdagelsesÅr = scanner.nextInt();
+                //   System.out.println("Indtast Superheltens powerlevel: ");
+                double powerlevel = 0;
+                int opdagelsesÅr = 0;
+
+                boolean error = false;
+                do {
+                    error = false;
+                    try {
+                        System.out.println("Indtast Superheltens powerlevel: ");
+                        powerlevel = scanner.nextDouble();
+                    } catch (InputMismatchException ime) {
+                        System.out.println("Indtast en numerisk værdi: ");
+                        error = true;
+                        scanner.nextLine();
+                    }
+                } while (error);
+
+                do {
+                    error = false;
+                    try {
+                        System.out.println("Indtast Superheltens opdagelsesår: ");
+                        opdagelsesÅr = scanner.nextInt();
+                    } catch (InputMismatchException ime) {
+                        System.out.println("Indtast en numerisk værdi: ");
+                        error = true;
+                        scanner.nextLine();
+                    }
+                } while (error);
+
                 System.out.println("Superhelt er nu oprettet\n");
                 database.createSuperhero(navn, rigtigNavn, superkræft, powerlevel, opdagelsesÅr);
             }
-
             if (menuvalg == 3) {
-                System.out.println("Søg efter helt: ");
-                String søgning = scanner.nextLine();
-                Superhero fundet = database.searchForSuperhero(søgning);
+
+                Superhero fundet = null;
+                boolean error = false;
+                do {
+                    error = false;
+                    System.out.println("Søg efter helt: ");
+                    String søgning = scanner.nextLine();
+                    fundet = database.searchForSuperhero(søgning);
+                    if (fundet == null) {
+                        error = true;
+                    }
+
+                } while (error);
                 System.out.println("Rediger data og tryk Enter. Hvis data ikke skal redigeres tryk kun Enter");
-                System.out.println("Skriv '0' for at ændre > powerlevel & opdagelsesår: \n");
+                System.out.println("Hvis dataen ikke skal redigeres for powerlevel & opdagelsesår: Tryk 0 for at skip: \n");
                 System.out.println("Superhelt navn: " + fundet.getSuperheltNavn());
                 String newName = scanner.nextLine();
                 if (!newName.isEmpty())
@@ -59,23 +93,22 @@ public class UserInterface {
                 if (!newSuperpower.isEmpty())
                     fundet.setSuperkræft(newSuperpower);
 
+                System.out.println("Powerlevel: " + fundet.getPowerlevel());
+                double newPowerlevel = scanner.nextDouble();
+                if (newPowerlevel != 0)
+                    fundet.setPowerlevel(newPowerlevel);
+                else
+                    fundet.setPowerlevel(fundet.getPowerlevel());
 
-                System.out.println("Powerevel: " + fundet.getPowerlevel());
-                // TODO: Make powerlevel editable
-                /*double newPowerlevel = scanner.nextDouble();
-                if (newPowerlevel == 0)
-                    fundet.setPowerlevel(newPowerlevel);*/
-
-                    System.out.println("Opdagelsesår: " + fundet.getOpdagelsesår());
-                    // TODO: Make discovery year editable
-                    /*int newDiscoveryYear = scanner.nextInt();
-                    if (newDiscoveryYear == 0)
-                        fundet.setPowerlevel(newDiscoveryYear);*/
+                System.out.println("Opdagelsesår: " + fundet.getOpdagelsesår());
+                int newDiscoveryYear = scanner.nextInt();
+                if (newDiscoveryYear != 0)
+                    fundet.setOpdagelsesår(newDiscoveryYear);
+                else
+                    fundet.setOpdagelsesår(fundet.getOpdagelsesår());
             }
-
             if (menuvalg == 5) {
                 for (Superhero superhero : database.getSuperheroes()) {
-                    String søgning = scanner.nextLine();
                     System.out.println("Superhelt navn: " + superhero.getSuperheltNavn());
                     System.out.println("Superhelts rigtige navn: " + superhero.getRigtigenavn());
                     System.out.println("Superkræft: " + superhero.getSuperkræft());
@@ -84,7 +117,8 @@ public class UserInterface {
                     System.out.println(" ");
 
                 }
-            } else if (menuvalg == 9) ;
+            }
+            else if (menuvalg == 9) ;
 
         } while (menuvalg != 9);
         System.out.println("Programmet afsluttes");
@@ -94,6 +128,5 @@ public class UserInterface {
         startProgram();
         menuvalg();
     }
-
 
 }

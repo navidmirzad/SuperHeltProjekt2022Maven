@@ -20,7 +20,7 @@ public class Database {
 
     public Superhero searchForSuperhero(String searchTerm) {
         for (Superhero s : getSuperheroes()) {
-            if (s.getSuperheltnavn().equals(searchTerm)) {
+            if (s.getSuperheltnavn().contains(searchTerm)) {
                 System.out.println("Fundet superhelt:  ");
                 return s;
             }

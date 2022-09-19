@@ -42,7 +42,8 @@ public class UserInterface {
                 System.out.println("Søg efter helt: ");
                 String søgning = scanner.nextLine();
                 Superhero fundet = database.searchForSuperhero(søgning);
-                System.out.println("Rediger data og tryk Enter. Hvis data ikke skal redigeres tryk kun Enter\n");
+                System.out.println("Rediger data og tryk Enter. Hvis data ikke skal redigeres tryk kun Enter");
+                System.out.println("Skriv '0' for at ændre > powerlevel & opdagelsesår: \n");
                 System.out.println("Superhelt navn: " + fundet.getSuperheltNavn());
                 String newName = scanner.nextLine();
                 if (!newName.isEmpty())
@@ -58,10 +59,18 @@ public class UserInterface {
                 if (!newSuperpower.isEmpty())
                     fundet.setSuperkræft(newSuperpower);
 
-                System.out.println("Powerevel: " + fundet.getPowerlevel());
-                System.out.println("Opdagelsesår: " + fundet.getOpdagelsesår());
-                System.out.println(" ");
 
+                System.out.println("Powerevel: " + fundet.getPowerlevel());
+                // TODO: Make powerlevel editable
+                /*double newPowerlevel = scanner.nextDouble();
+                if (newPowerlevel == 0)
+                    fundet.setPowerlevel(newPowerlevel);*/
+
+                    System.out.println("Opdagelsesår: " + fundet.getOpdagelsesår());
+                    // TODO: Make discovery year editable
+                    /*int newDiscoveryYear = scanner.nextInt();
+                    if (newDiscoveryYear == 0)
+                        fundet.setPowerlevel(newDiscoveryYear);*/
             }
 
             if (menuvalg == 5) {

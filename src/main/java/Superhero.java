@@ -46,8 +46,16 @@ public class Superhero {
         return powerlevel;
     }
 
+    public void setPowerlevel(double powerlevel) {
+        this.powerlevel = powerlevel;
+    }
+
     public int getOpdagelsesår() {
         return opdagelsesår;
+    }
+
+    private void setOpdagelsesår(int opdagelsesår) {
+        this.opdagelsesår = opdagelsesår;
     }
 
     public String toString() {

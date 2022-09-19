@@ -4,9 +4,6 @@ public class Database {
 
     private ArrayList<Superhero> superheroes = new ArrayList<>();
 
-    public void createSuperhero() {
-    }
-
     public void createSuperhero(String superheltnavn, String rigtigenavn,
                                 String superkræft, double powerlevel, int opdagelsesår) {
 
@@ -20,10 +17,16 @@ public class Database {
 
     public Superhero searchForSuperhero(String searchTerm) {
         for (Superhero s : getSuperheroes()) {
-            if (s.getSuperheltnavn().contains(searchTerm)) {
+            if (s.getSuperheltNavn().contains(searchTerm)) {
                 System.out.println("Fundet superhelt:  ");
                 return s;
             }
+            if (s.getSuperheltNavn().equals(searchTerm)) {
+                System.out.println("Fundet superhelt:  ");
+                return s;
+            }
+            System.out.println("Kunne ikke finde superhelt: ");
+            return null;
         }
         System.out.println("Kunne ikke finde superhelt: ");
         return null;

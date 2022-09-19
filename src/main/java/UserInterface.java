@@ -42,9 +42,22 @@ public class UserInterface {
                 System.out.println("Søg efter helt: ");
                 String søgning = scanner.nextLine();
                 Superhero fundet = database.searchForSuperhero(søgning);
-                System.out.println("Superhelt navn: " + fundet.getSuperheltnavn());
+                System.out.println("Rediger data og tryk Enter. Hvis data ikke skal redigeres tryk kun Enter\n");
+                System.out.println("Superhelt navn: " + fundet.getSuperheltNavn());
+                String newName = scanner.nextLine();
+                if (!newName.isEmpty())
+                    fundet.setSuperheltNavn(newName);
+
                 System.out.println("Superhelts rigtige navn: " + fundet.getRigtigenavn());
+                String newRealName = scanner.nextLine();
+                if (!newRealName.isEmpty())
+                    fundet.setRigtigeNavn(newRealName);
+
                 System.out.println("Superkræft: " + fundet.getSuperkræft());
+                String newSuperpower = scanner.nextLine();
+                if (!newSuperpower.isEmpty())
+                    fundet.setSuperkræft(newSuperpower);
+
                 System.out.println("Powerevel: " + fundet.getPowerlevel());
                 System.out.println("Opdagelsesår: " + fundet.getOpdagelsesår());
                 System.out.println(" ");
@@ -54,7 +67,7 @@ public class UserInterface {
             if (menuvalg == 5) {
                 for (Superhero superhero : database.getSuperheroes()) {
                     String søgning = scanner.nextLine();
-                    System.out.println("Superhelt navn: " + superhero.getSuperheltnavn());
+                    System.out.println("Superhelt navn: " + superhero.getSuperheltNavn());
                     System.out.println("Superhelts rigtige navn: " + superhero.getRigtigenavn());
                     System.out.println("Superkræft: " + superhero.getSuperkræft());
                     System.out.println("Powerevel: " + superhero.getPowerlevel());

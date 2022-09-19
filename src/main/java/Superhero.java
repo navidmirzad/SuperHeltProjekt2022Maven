@@ -18,16 +18,28 @@ public class Superhero {
 
     }
 
-    public String getSuperheltnavn() {
+    public String getSuperheltNavn() {
         return superheltnavn;
+    }
+
+    public void setSuperheltNavn(String superheltnavn) {
+        this.superheltnavn = superheltnavn;
     }
 
     public String getRigtigenavn() {
         return rigtigenavn;
     }
 
+    public void setRigtigeNavn(String rigtigenavn) {
+        this.rigtigenavn = rigtigenavn;
+    }
+
     public String getSuperkræft() {
         return superkræft;
+    }
+
+    public void setSuperkræft(String superkræft) {
+        this.superkræft = superkræft;
     }
 
     public double getPowerlevel() {

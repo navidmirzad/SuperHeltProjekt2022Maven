@@ -32,6 +32,21 @@ class DatabaseTest {
 
     @Test
     void deleteSuperhero() {
+        //arrange
+        ArrayList<Superhero> results = database.getSuperheroes();
+        Superhero superhero = results.get(0);
+        //act
+        int expectedSize = results.size() - 1;
+        boolean actualResult = database.deleteSuperhero(superhero);
+        boolean expectedResult = true;
+
+        //assert
+        assertEquals(expectedResult, actualResult);
+
+        ArrayList<Superhero> resultsAfterDelete = database.getSuperheroes();
+        int actualSize = resultsAfterDelete.size();
+
+        assertEquals(expectedSize, actualSize);
     }
 
     @Test

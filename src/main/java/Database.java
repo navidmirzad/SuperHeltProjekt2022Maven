@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Database {
@@ -24,7 +25,6 @@ public class Database {
     }
 
     public Superhero searchForSuperhero(String searchTerm) {
-        //   ArrayList<Superhero> results = superheroes //TODO
         for (Superhero s : getSuperheroes()) {
             if (s.getSuperheltNavn().contains(searchTerm)) {
                 return s;
@@ -36,9 +36,11 @@ public class Database {
         return null;
     }
 
+
+
     public boolean deleteSuperhero(Superhero superhero) {
         boolean success = true;
-        // TODO: FAKE indhold, skal erstattes
+        superheroes.remove(superhero);
         return success;
     }
 }

@@ -9,9 +9,9 @@ public class UserInterface {
     private void startProgram() {
         System.out.println("Velkommen til SuperHelt Databasen 2022!");
         System.out.println("----------------------");
+
         // NB: Midlertidig testdata - husk at fjerne
         database.createTestData();
-
     }
 
     private void menuvalg() {
@@ -21,6 +21,7 @@ public class UserInterface {
             System.out.println("1. Opret superhelt: ");
             System.out.println("3. Søg i databasen");
             System.out.println("5. Se listen af superhelte: ");
+            System.out.println("6. Slet fra liste af superhelte: ");
             System.out.println("9. Afslut: ");
             menuvalg = scanner.nextInt();
             scanner.nextLine();
@@ -79,7 +80,6 @@ public class UserInterface {
                     } else {
                         System.out.println("Kunne ikke finde superhelt: ");
                         error = true;
-
                     }
 
                 } while (error);
@@ -124,9 +124,29 @@ public class UserInterface {
                     System.out.println(" ");
                 }
             }
-            else if (menuvalg == 9) ;
+            if (menuvalg == 6) {
+                System.out.println("SLET");
+                Superhero fundet = null;
+                boolean error = false;
+                do {
+                    error = false;
+                    System.out.println("Søg efter helt: ");
+                    String søgning = scanner.nextLine();
+                    fundet = database.searchForSuperhero(søgning);
+                    if (fundet != null) {
+                        System.out.println("Fundet superhelt:  ");
 
-        } while (menuvalg != 9);
+                    } else {
+                        System.out.println("Kunne ikke finde superhelt: ");
+                        error = true;
+                    }
+
+                } while (error);
+                database.deleteSuperhero(fundet);
+            } else if (menuvalg == 9) ;
+
+        }
+        while (menuvalg != 9);
         System.out.println("Programmet afsluttes");
     }
 

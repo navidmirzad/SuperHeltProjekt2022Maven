@@ -125,7 +125,7 @@ public class UserInterface {
                 }
             }
             if (menuvalg == 6) {
-                System.out.println("SLET");
+                System.out.println("Slet en superhelt! ");
                 Superhero fundet = null;
                 boolean error = false;
                 do {
@@ -135,7 +135,6 @@ public class UserInterface {
                     fundet = database.searchForSuperhero(søgning);
                     if (fundet != null) {
                         System.out.println("Fundet superhelt:  ");
-
                     } else {
                         System.out.println("Kunne ikke finde superhelt: ");
                         error = true;
@@ -143,7 +142,9 @@ public class UserInterface {
 
                 } while (error);
                 database.deleteSuperhero(fundet);
-            } else if (menuvalg == 9) ;
+                System.out.println("Superhelt er nu slettet! \n");
+            }
+            else if (menuvalg == 9) ;
 
         }
         while (menuvalg != 9);

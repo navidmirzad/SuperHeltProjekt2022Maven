@@ -9,6 +9,8 @@ public class UserInterface {
     private void startProgram() {
         System.out.println("Velkommen til SuperHelt Databasen 2022!");
         System.out.println("----------------------");
+        // NB: Midlertidig testdata - husk at fjerne
+        database.createTestData();
 
     }
 
@@ -71,8 +73,13 @@ public class UserInterface {
                     System.out.println("Søg efter helt: ");
                     String søgning = scanner.nextLine();
                     fundet = database.searchForSuperhero(søgning);
-                    if (fundet == null) {
+                    if (fundet != null) {
+                        System.out.println("Fundet superhelt:  ");
+
+                    } else {
+                        System.out.println("Kunne ikke finde superhelt: ");
                         error = true;
+
                     }
 
                 } while (error);
@@ -115,7 +122,6 @@ public class UserInterface {
                     System.out.println("Powerevel: " + superhero.getPowerlevel());
                     System.out.println("Opdagelsesår: " + superhero.getOpdagelsesår());
                     System.out.println(" ");
-
                 }
             }
             else if (menuvalg == 9) ;

@@ -5,7 +5,11 @@ public class Database {
     private ArrayList<Superhero> superheroes = new ArrayList<>();
 
     public void createTestData() {
-
+        createSuperhero("Spiderman", "Peter Parker", "spider abilities", 2400, 2000);
+        createSuperhero("Dr. Strange", "Stephen Strange", "magi", 7000, 1980);
+        createSuperhero("Captain America", "Steve Rogers", "superhuman", 3500, 1945);
+        createSuperhero("Batman", "Bruce Wayne", "flagermusmand", 1400, 1990);
+        createSuperhero("Deadpool", "Wade Wilson", "immortal", 8500, 1999);
     }
 
     public void createSuperhero(String superheltnavn, String rigtigenavn,
@@ -20,19 +24,21 @@ public class Database {
     }
 
     public Superhero searchForSuperhero(String searchTerm) {
+        //   ArrayList<Superhero> results = superheroes //TODO
         for (Superhero s : getSuperheroes()) {
             if (s.getSuperheltNavn().contains(searchTerm)) {
-                System.out.println("Fundet superhelt:  ");
                 return s;
             }
             if (s.getSuperheltNavn().equals(searchTerm)) {
-                System.out.println("Fundet superhelt:  ");
                 return s;
             }
-            System.out.println("Kunne ikke finde superhelt: ");
-            return null;
         }
-        System.out.println("Kunne ikke finde superhelt: ");
         return null;
+    }
+
+    public boolean deleteSuperhero(Superhero superhero) {
+        boolean success = true;
+        // TODO: FAKE indhold, skal erstattes
+        return success;
     }
 }

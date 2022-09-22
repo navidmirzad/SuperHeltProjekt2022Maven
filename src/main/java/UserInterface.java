@@ -5,6 +5,7 @@ public class UserInterface {
 
     Database database = new Database();
     Scanner scanner = new Scanner(System.in);
+    int menuvalg;
 
     private void startProgram() {
         System.out.println("Velkommen til SuperHelt Databasen 2022!");
@@ -15,7 +16,6 @@ public class UserInterface {
     }
 
     private void menuvalg() {
-        int menuvalg;
 
         do {
             System.out.println("1. Opret superhelt: ");
@@ -154,6 +154,6 @@ public class UserInterface {
     public void start() {
         startProgram();
         menuvalg();
-    }
 
+    }
 }

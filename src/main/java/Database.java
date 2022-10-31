@@ -25,22 +25,21 @@ public class Database {
     }
 
     public Superhero searchForSuperhero(String searchTerm) {
-        for (Superhero s : getSuperheroes()) {
-            if (s.getSuperheltNavn().contains(searchTerm)) {
-                return s;
+        for (Superhero superhero : getSuperheroes()) {
+            if (superhero.getSuperheltNavn().contains(searchTerm)) {
+                return superhero;
             }
-            if (s.getSuperheltNavn().equals(searchTerm)) {
-                return s;
+            if (superhero.getSuperheltNavn().equals(searchTerm)) {
+                return superhero;
             }
         }
         return null;
     }
-
-
 
     public boolean deleteSuperhero(Superhero superhero) {
         boolean success = true;
         superheroes.remove(superhero);
         return success;
     }
+
 }

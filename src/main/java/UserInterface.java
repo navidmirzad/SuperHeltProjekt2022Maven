@@ -7,6 +7,7 @@ public class UserInterface {
     Scanner scanner = new Scanner(System.in);
     int menuvalg;
 
+
     private void startProgram() {
         System.out.println("Velkommen til SuperHelt Databasen 2022!");
         System.out.println("----------------------");
@@ -19,9 +20,9 @@ public class UserInterface {
 
         do {
             System.out.println("1. Opret superhelt: ");
-            System.out.println("3. Søg i databasen");
-            System.out.println("5. Se listen af superhelte: ");
-            System.out.println("6. Slet fra liste af superhelte: ");
+            System.out.println("2. Søg i databasen");
+            System.out.println("3. Se listen af superhelte: ");
+            System.out.println("4. Slet fra liste af superhelte: ");
             System.out.println("9. Afslut: ");
             menuvalg = scanner.nextInt();
             scanner.nextLine();
@@ -65,7 +66,7 @@ public class UserInterface {
                 System.out.println("Superhelt er nu oprettet\n");
                 database.createSuperhero(navn, rigtigNavn, superkræft, powerlevel, opdagelsesÅr);
             }
-            if (menuvalg == 3) {
+            if (menuvalg == 2) {
 
                 Superhero fundet = null;
                 boolean error = false;
@@ -114,7 +115,7 @@ public class UserInterface {
                 else
                     fundet.setOpdagelsesår(fundet.getOpdagelsesår());
             }
-            if (menuvalg == 5) {
+            if (menuvalg == 3) {
                 for (Superhero superhero : database.getSuperheroes()) {
                     System.out.println("Superhelt navn: " + superhero.getSuperheltNavn());
                     System.out.println("Superhelts rigtige navn: " + superhero.getRigtigenavn());
@@ -124,7 +125,7 @@ public class UserInterface {
                     System.out.println(" ");
                 }
             }
-            if (menuvalg == 6) {
+            if (menuvalg == 4) {
                 System.out.println("Slet en superhelt! ");
                 Superhero fundet = null;
                 boolean error = false;
@@ -151,6 +152,7 @@ public class UserInterface {
         System.out.println("Programmet afsluttes");
     }
 
+    // methods
     public void start() {
         startProgram();
         menuvalg();

@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    Database database = new Database();
+    Controller controller = new Controller();
     Scanner scanner = new Scanner(System.in);
     int menuvalg;
 
@@ -13,7 +13,7 @@ public class UserInterface {
         System.out.println("----------------------");
 
         // NB: Midlertidig testdata - husk at fjerne
-        database.createTestData();
+        controller.createTestData();
     }
 
     private void menuvalg() {
@@ -23,6 +23,7 @@ public class UserInterface {
             System.out.println("2. Søg i databasen");
             System.out.println("3. Se listen af superhelte: ");
             System.out.println("4. Slet fra liste af superhelte: ");
+            System.out.println("5. Gem data: (NOT IMPLEMENTED)");
             System.out.println("9. Afslut: ");
             menuvalg = scanner.nextInt();
             scanner.nextLine();
@@ -64,7 +65,7 @@ public class UserInterface {
                 } while (error);
 
                 System.out.println("Superhelt er nu oprettet\n");
-                database.createSuperhero(navn, rigtigNavn, superkræft, powerlevel, opdagelsesÅr);
+                controller.createSuperhero(navn, rigtigNavn, superkræft, powerlevel, opdagelsesÅr);
             }
             if (menuvalg == 2) {
 
@@ -73,8 +74,8 @@ public class UserInterface {
                 do {
                     error = false;
                     System.out.println("Søg efter helt: ");
-                    String søgning = scanner.nextLine();
-                    fundet = database.searchForSuperhero(søgning);
+                    String searchTerm = scanner.nextLine();
+                    fundet = controller.searchForSuperhero(searchTerm);
                     if (fundet != null) {
                         System.out.println("Fundet superhelt:  ");
 
@@ -116,7 +117,7 @@ public class UserInterface {
                     fundet.setOpdagelsesår(fundet.getOpdagelsesår());
             }
             if (menuvalg == 3) {
-                for (Superhero superhero : database.getSuperheroes()) {
+                for (Superhero superhero : controller.getSuperheroes()) {
                     System.out.println("Superhelt navn: " + superhero.getSuperheltNavn());
                     System.out.println("Superhelts rigtige navn: " + superhero.getRigtigenavn());
                     System.out.println("Superkræft: " + superhero.getSuperkræft());
@@ -133,7 +134,7 @@ public class UserInterface {
                     error = false;
                     System.out.println("Søg efter helt: ");
                     String søgning = scanner.nextLine();
-                    fundet = database.searchForSuperhero(søgning);
+                    fundet = controller.searchForSuperhero(søgning);
                     if (fundet != null) {
                         System.out.println("Fundet superhelt:  ");
                     } else {
@@ -142,8 +143,11 @@ public class UserInterface {
                     }
 
                 } while (error);
-                database.deleteSuperhero(fundet);
+                controller.deleteSuperhero(fundet);
                 System.out.println("Superhelt er nu slettet! \n");
+            }
+            if (menuvalg == 5) {
+                // TODO:
             }
             else if (menuvalg == 9) ;
 

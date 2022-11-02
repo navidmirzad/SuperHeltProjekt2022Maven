@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -13,10 +14,11 @@ public class UserInterface {
         System.out.println("----------------------");
 
         // NB: Midlertidig testdata - husk at fjerne
-        controller.createTestData();
+      //  controller.createTestData();
+
     }
 
-    private void menuvalg() {
+    private void menuvalg() throws FileNotFoundException {
 
         do {
             System.out.println("1. Opret superhelt: ");
@@ -87,20 +89,20 @@ public class UserInterface {
                 } while (error);
                 System.out.println("Rediger data og tryk Enter. Hvis data ikke skal redigeres tryk kun Enter");
                 System.out.println("Hvis dataen ikke skal redigeres for powerlevel & opdagelsesår: Tryk 0 for at skip: \n");
-                System.out.println("Superhelt navn: " + fundet.getSuperheltNavn());
+                System.out.println("Superhelt navn: " + fundet.getSuperHeroName());
                 String newName = scanner.nextLine();
                 if (!newName.isEmpty())
-                    fundet.setSuperheltNavn(newName);
+                    fundet.setSuperHeroName(newName);
 
-                System.out.println("Superhelts rigtige navn: " + fundet.getRigtigenavn());
+                System.out.println("Superhelts rigtige navn: " + fundet.getRealName());
                 String newRealName = scanner.nextLine();
                 if (!newRealName.isEmpty())
-                    fundet.setRigtigeNavn(newRealName);
+                    fundet.setRealName(newRealName);
 
-                System.out.println("Superkræft: " + fundet.getSuperkræft());
+                System.out.println("Superkræft: " + fundet.getSuperpower());
                 String newSuperpower = scanner.nextLine();
                 if (!newSuperpower.isEmpty())
-                    fundet.setSuperkræft(newSuperpower);
+                    fundet.setSuperpower(newSuperpower);
 
                 System.out.println("Powerlevel: " + fundet.getPowerlevel());
                 double newPowerlevel = scanner.nextDouble();
@@ -109,20 +111,20 @@ public class UserInterface {
                 else
                     fundet.setPowerlevel(fundet.getPowerlevel());
 
-                System.out.println("Opdagelsesår: " + fundet.getOpdagelsesår());
+                System.out.println("Opdagelsesår: " + fundet.getDiscoveryYear());
                 int newDiscoveryYear = scanner.nextInt();
                 if (newDiscoveryYear != 0)
-                    fundet.setOpdagelsesår(newDiscoveryYear);
+                    fundet.setDiscoveryYear(newDiscoveryYear);
                 else
-                    fundet.setOpdagelsesår(fundet.getOpdagelsesår());
+                    fundet.setDiscoveryYear(fundet.getDiscoveryYear());
             }
             if (menuvalg == 3) {
                 for (Superhero superhero : controller.getSuperheroes()) {
-                    System.out.println("Superhelt navn: " + superhero.getSuperheltNavn());
-                    System.out.println("Superhelts rigtige navn: " + superhero.getRigtigenavn());
-                    System.out.println("Superkræft: " + superhero.getSuperkræft());
+                    System.out.println("Superhelt navn: " + superhero.getSuperHeroName());
+                    System.out.println("Superhelts rigtige navn: " + superhero.getRealName());
+                    System.out.println("Superkræft: " + superhero.getSuperpower());
                     System.out.println("Powerevel: " + superhero.getPowerlevel());
-                    System.out.println("Opdagelsesår: " + superhero.getOpdagelsesår());
+                    System.out.println("Opdagelsesår: " + superhero.getDiscoveryYear());
                     System.out.println(" ");
                 }
             }
@@ -147,7 +149,8 @@ public class UserInterface {
                 System.out.println("Superhelt er nu slettet! \n");
             }
             if (menuvalg == 5) {
-                // TODO:
+            controller.saveData();
+                System.out.println("Your data has now been saved: ");
             }
             else if (menuvalg == 9) ;
 
@@ -159,7 +162,11 @@ public class UserInterface {
     // methods
     public void start() {
         startProgram();
-        menuvalg();
+        try {
+            menuvalg();
+        } catch (FileNotFoundException e) {
+            System.out.println("Something went wrong with saving the file...");;
+        }
 
     }
 }

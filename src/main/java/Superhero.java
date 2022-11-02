@@ -4,46 +4,46 @@ public class Superhero { //class name
     public Superhero[] superheroes;
 
     // attributes
-    private String superheltnavn;
-    private String rigtigenavn;
-    private String superkræft;
+    private String superHeroName;
+    private String realName;
+    private String superpower;
     private double powerlevel;
-    private int opdagelsesår;
+    private int discoveryYear;
 
 
     // constructor
-    public Superhero(String superheltnavn, String rigtigenavn, String superkræft, double powerlevel, int opdagelsesår)  {
+    public Superhero(String superHeroName, String realName, String superpower, double powerlevel, int discoveryYear)  {
 
-        this.superheltnavn = superheltnavn;
-        this.rigtigenavn = rigtigenavn;
-        this.superkræft = superkræft;
+        this.superHeroName = superHeroName;
+        this.realName = realName;
+        this.superpower = superpower;
         this.powerlevel = powerlevel;
-        this.opdagelsesår = opdagelsesår;
+        this.discoveryYear = discoveryYear;
 
     }
 
-    public String getSuperheltNavn() {
-        return superheltnavn;
+    public String getSuperHeroName() {
+        return superHeroName;
     }
 
-    public void setSuperheltNavn(String superheltnavn) {
-        this.superheltnavn = superheltnavn;
+    public void setSuperHeroName(String superheltnavn) {
+        this.superHeroName = superheltnavn;
     }
 
-    public String getRigtigenavn() {
-        return rigtigenavn;
+    public String getRealName() {
+        return realName;
     }
 
-    public void setRigtigeNavn(String rigtigenavn) {
-        this.rigtigenavn = rigtigenavn;
+    public void setRealName(String rigtigenavn) {
+        this.realName = rigtigenavn;
     }
 
-    public String getSuperkræft() {
-        return superkræft;
+    public String getSuperpower() {
+        return superpower;
     }
 
-    public void setSuperkræft(String superkræft) {
-        this.superkræft = superkræft;
+    public void setSuperpower(String superpower) {
+        this.superpower = superpower;
     }
 
     public double getPowerlevel() {
@@ -54,21 +54,22 @@ public class Superhero { //class name
         this.powerlevel = powerlevel;
     }
 
-    public int getOpdagelsesår() {
-        return opdagelsesår;
+    public int getDiscoveryYear() {
+        return discoveryYear;
     }
 
-    public void setOpdagelsesår(int opdagelsesår) {
-        this.opdagelsesår = opdagelsesår;
+    public void setDiscoveryYear(int discoveryYear) {
+        this.discoveryYear = discoveryYear;
     }
 
     public String toString() {
-        return "Superheltens navn: " + superheltnavn +
-                "Rigtige navn: " + rigtigenavn +
-                "Superkræft : " + superkræft +
+        return "Superheltens navn: " + superHeroName +
+                "Rigtige navn: " + realName +
+                "Superkræft : " + superpower +
                 "Powerlevel : " + powerlevel +
-                "Opdagelsesår: " + opdagelsesår;
+                "Opdagelsesår: " + discoveryYear;
     }
+
 }
 
 

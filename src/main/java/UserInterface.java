@@ -14,7 +14,7 @@ public class UserInterface {
         System.out.println("----------------------");
 
         // NB: Midlertidig testdata - husk at fjerne
-      //  controller.createTestData();
+        //  controller.createTestData();
 
     }
 
@@ -25,7 +25,7 @@ public class UserInterface {
             System.out.println("2. Søg i databasen");
             System.out.println("3. Se listen af superhelte: ");
             System.out.println("4. Slet fra liste af superhelte: ");
-            System.out.println("5. Gem data: (NOT IMPLEMENTED)");
+            System.out.println("5. Gem data: ");
             System.out.println("9. Afslut: ");
             menuvalg = scanner.nextInt();
             scanner.nextLine();
@@ -68,6 +68,7 @@ public class UserInterface {
 
                 System.out.println("Superhelt er nu oprettet\n");
                 controller.createSuperhero(navn, rigtigNavn, superkræft, powerlevel, opdagelsesÅr);
+                controller.saveData();
             }
             if (menuvalg == 2) {
 
@@ -99,17 +100,17 @@ public class UserInterface {
                 if (!newRealName.isEmpty())
                     fundet.setRealName(newRealName);
 
-                System.out.println("Superkræft: " + fundet.getSuperpower());
+                System.out.println("Superkræft: " + fundet.getSuperPower());
                 String newSuperpower = scanner.nextLine();
                 if (!newSuperpower.isEmpty())
-                    fundet.setSuperpower(newSuperpower);
+                    fundet.setSuperPower(newSuperpower);
 
-                System.out.println("Powerlevel: " + fundet.getPowerlevel());
+                System.out.println("Powerlevel: " + fundet.getPowerLevel());
                 double newPowerlevel = scanner.nextDouble();
                 if (newPowerlevel != 0)
-                    fundet.setPowerlevel(newPowerlevel);
+                    fundet.setPowerLevel(newPowerlevel);
                 else
-                    fundet.setPowerlevel(fundet.getPowerlevel());
+                    fundet.setPowerLevel(fundet.getPowerLevel());
 
                 System.out.println("Opdagelsesår: " + fundet.getDiscoveryYear());
                 int newDiscoveryYear = scanner.nextInt();
@@ -119,13 +120,17 @@ public class UserInterface {
                     fundet.setDiscoveryYear(fundet.getDiscoveryYear());
             }
             if (menuvalg == 3) {
+
+                controller.loadData();
+
                 for (Superhero superhero : controller.getSuperheroes()) {
                     System.out.println("Superhelt navn: " + superhero.getSuperHeroName());
                     System.out.println("Superhelts rigtige navn: " + superhero.getRealName());
-                    System.out.println("Superkræft: " + superhero.getSuperpower());
-                    System.out.println("Powerevel: " + superhero.getPowerlevel());
+                    System.out.println("Superkræft: " + superhero.getSuperPower());
+                    System.out.println("Powerevel: " + superhero.getPowerLevel());
                     System.out.println("Opdagelsesår: " + superhero.getDiscoveryYear());
                     System.out.println(" ");
+
                 }
             }
             if (menuvalg == 4) {
@@ -146,10 +151,11 @@ public class UserInterface {
 
                 } while (error);
                 controller.deleteSuperhero(fundet);
-                System.out.println("Superhelt er nu slettet! \n");
+                controller.saveData();
+                System.out.println(fundet.getSuperHeroName() + " " + "Superhelt er nu slettet! \n");
             }
             if (menuvalg == 5) {
-            controller.saveData();
+                controller.saveData();
                 System.out.println("Your data has now been saved: ");
             }
             else if (menuvalg == 9) ;
@@ -164,8 +170,8 @@ public class UserInterface {
         startProgram();
         try {
             menuvalg();
-        } catch (FileNotFoundException e) {
-            System.out.println("Something went wrong with saving the file...");;
+        } catch (Exception e) {
+            System.out.println("Something went wrong with saving the file...");
         }
 
     }

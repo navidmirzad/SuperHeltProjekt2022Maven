@@ -26,13 +26,20 @@ public class Controller {
     }
 
     public boolean deleteSuperhero(Superhero superhero) {
+
         return database.deleteSuperhero(superhero);
     }
 
     public void saveData() throws FileNotFoundException {
         FileHandler fileHandler = new FileHandler();
-
         fileHandler.saveData(database.getSuperheroes());
 
     }
+
+    public void loadData() throws FileNotFoundException {
+        FileHandler fileHandler = new FileHandler();
+        fileHandler.loadData(database.getSuperheroes());
+    }
+
+
 }

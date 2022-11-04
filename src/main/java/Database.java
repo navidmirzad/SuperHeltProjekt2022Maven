@@ -1,16 +1,9 @@
+import java.io.File;
 import java.util.ArrayList;
 
 public class Database {
 
     private ArrayList<Superhero> superheroes = new ArrayList<>();
-
-   /* public void createTestData() {
-        createSuperhero("Spiderman", "Peter Parker", "spider abilities", 2400, 2000);
-        createSuperhero("Dr. Strange", "Stephen Strange", "magi", 7000, 1980);
-        createSuperhero("Captain America", "Steve Rogers", "superhuman", 3500, 1945);
-        createSuperhero("Batman", "Bruce Wayne", "flagermusmand", 1400, 1990);
-        createSuperhero("Deadpool", "Wade Wilson", "immortal", 8500, 1999);
-    }*/ // hardcoded testdata
 
     public void createSuperhero(String superheltnavn, String rigtigenavn,
                                 String superkræft, double powerlevel, int opdagelsesår) {

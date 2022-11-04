@@ -1,24 +1,28 @@
 public class Superhero { //class name
 
     // array
-    public Superhero[] superheroes;
+   // public Superhero[] superheroes;
 
     // attributes
     private String superHeroName;
     private String realName;
-    private String superpower;
-    private double powerlevel;
+    private String superPower;
+    private double powerLevel;
     private int discoveryYear;
 
 
     // constructor
-    public Superhero(String superHeroName, String realName, String superpower, double powerlevel, int discoveryYear)  {
+    public Superhero(String superHeroName, String realName, String superPower, double powerLevel, int discoveryYear)  {
 
         this.superHeroName = superHeroName;
         this.realName = realName;
-        this.superpower = superpower;
-        this.powerlevel = powerlevel;
+        this.superPower = superPower;
+        this.powerLevel = powerLevel;
         this.discoveryYear = discoveryYear;
+
+    }
+
+    public Superhero() {
 
     }
 
@@ -38,20 +42,20 @@ public class Superhero { //class name
         this.realName = rigtigenavn;
     }
 
-    public String getSuperpower() {
-        return superpower;
+    public String getSuperPower() {
+        return superPower;
     }
 
-    public void setSuperpower(String superpower) {
-        this.superpower = superpower;
+    public void setSuperPower(String superPower) {
+        this.superPower = superPower;
     }
 
-    public double getPowerlevel() {
-        return powerlevel;
+    public double getPowerLevel() {
+        return powerLevel;
     }
 
-    public void setPowerlevel(double powerlevel) {
-        this.powerlevel = powerlevel;
+    public void setPowerLevel(double powerLevel) {
+        this.powerLevel = powerLevel;
     }
 
     public int getDiscoveryYear() {
@@ -65,8 +69,8 @@ public class Superhero { //class name
     public String toString() {
         return "Superheltens navn: " + superHeroName +
                 "Rigtige navn: " + realName +
-                "Superkræft : " + superpower +
-                "Powerlevel : " + powerlevel +
+                "Superkræft : " + superPower +
+                "Powerlevel : " + powerLevel +
                 "Opdagelsesår: " + discoveryYear;
     }
 
